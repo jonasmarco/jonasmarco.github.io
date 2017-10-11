@@ -1,0 +1,194 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+img,
+iframe {
+    max-width: 100%;
+}
+
+.main-header h1 {
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 15px 0 0;
+    text-align: center;
+}
+
+.main-header .five-stars {
+    font-size: 12px;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 0 0 15px;
+    text-align: center;
+}
+
+.box-fruits {
+    position: relative;
+    width: 100%;
+}
+
+.fruits-list {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0 0;
+    text-align: center;
+}
+
+.item {
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    border: 1px solid rgba(172, 166, 166, 0.1);
+    display: inline-block;
+    line-height: 0;
+    margin: 10px;
+    max-width: 100%;
+    position: relative;
+    vertical-align: middle;
+    width: 249px;
+}
+
+.item:hover {
+    box-shadow: 0px 0px 10px -5px #000000;
+}
+
+.item img {
+    zoom: 30%;
+}
+
+.item .name h2 {
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+}
+
+.more-links {
+    text-align: center;
+}
+
+.more-links .link {
+    margin: 10px auto;
+    width: 30%;
+}
+
+.link {
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    background-color: crimson;
+    color: black;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 80%;
+}
+
+.link:hover {
+    background-color: darksalmon;
+}
+
+.link-voltar {
+    background-color: indianred;
+}
+
+.about {
+    text-align: center;
+}
+
+.about-text {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    max-width: 500px;
+}
+
+.about-text h1 {
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container-form {
+    margin: 0 auto;
+    max-width: 250px;
+}
+
+.formshow {
+    margin: 0 auto;
+    width: 250px;
+}
+
+.imput-form {
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    font-size: 16px;
+    text-indent: 6px;
+}
+
+input[type="submit"] {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.imput-form:active,
+.imput-form:focus {
+    box-shadow: 2px 2px 2px 0px #00048e;
+}
+
+.formshow label,
+input {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.forms .link {
+    width: 100%;
+}
+
+@media screen and (min-width: 1100px) {
+    .container {
+        display: block;
+        margin: 0 auto;
+        max-width: 1100px;
+        padding: 0;
+    }
+    .more-links {
+        padding: 20px 0;
+    }
+}
+
+@media screen and (max-width: 1099px) {
+    .container {
+        padding-left: 2%;
+        padding-right: 2%;
+        width: 96%;
+    }
+    .more-links {
+        padding: 20px 0;
+    }
+    .more-links .link {
+        width: 50%;
+    }
+}

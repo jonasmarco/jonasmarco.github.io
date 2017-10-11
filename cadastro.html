@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Jonas's Fair - Register page</title>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-form">
+        <form action="envia.php" method="POST" class="formshow">
+            <h1><i>Register</i></h1>
+            <label for="input-name">Name:</label>
+            <input type="text" name="input-name" value="" class="imput-form" id="input-name" placeholder="name" required>
+            <label for="input-login">E-mail:</label>
+            <input type="email" name="input-login" value="" class="imput-form" id="input-login" placeholder="e-mail" required>
+            <label for="input-phone">Phone:</label>
+            <input type="tel" name="input-phone" value="" class="imput-form" id="input-phone" placeholder="(xx) xxxx-xxxx" maxlength="15"
+                required pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4}">
+            <label for="input-cidy">City:</label>
+            <input type="text" name="input-city" value="" class="imput-form" id="input-city" placeholder="city" required>
+            <label for="input-state">State:</label>
+            <input type="text" name="input-state" value="" class="imput-form" id="input-state" placeholder="state" required>
+            <label for="input-gender">Gender:</label>
+            <select class="imput-form select-form imput-select" id="imput-gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+              </select>
+            <label for="input-date-birth">Date of Birth:</label>
+            <input type="date" name="input-date-birth" value="" class="imput-form" id="input-date-birth" placeholder="date of birth"
+                required>
+            <label for="input-message">Message:</label>
+            <textarea name="imput-message" class="imput-form" id="imput-message" cols="25" rows="6" maxlength="500" wrap="hard" placeholder="message"
+                required></textarea>
+            <div class="more-lins forms">
+                <input type="submit" class="link" value="Send">
+                <a href="index.html" class="link">Come back</a>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
