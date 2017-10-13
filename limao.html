@@ -4,6 +4,7 @@
 <head>
     <title>Lemon</title>
     <meta charset="UTF-8">
+    <!-- FAVICONS -->
     <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
@@ -22,24 +23,68 @@
     <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- INCLUDES -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="scripts/fancybox/jquery.fancybox.min.js"></script>
+    <script src="scripts/owl-carousel/owl.carousel.js"></script>
+    <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="scripts/fancybox/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="scripts/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="scripts/owl-carousel/owl.transitions.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="container about">
-        <img src="http://i.imgur.com/ZB1RGfA.jpg" alt="Limão" title="Limão">
-        <div class="about-text">
-            <h1>Lemon - ¢0.50 lb</h1>
-            <span>Sicilian lemon is the fruit of a small evergreen tree native to the Southeast Asia region of the rutaceous family.</span>
+    <header class="main-header">
+        <div class="container">
+            <div class="f-left">
+                <div class="brand">
+                    <a href="index.html">
+                        <h1>Jonas' Fair</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="f-right">
+                <nav class="menu">
+                    <h2 class="none">My Cart</h2>
+                    <div class="cart">
+                        <i class="ion-android-cart"></i>
+                    </div>
+                </nav>
+            </div>
         </div>
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/U7zwd6WLvSQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="more-links">
-            <a href="https://www.google.com/search?q=limão" target="_blank" class="link">Search on Google</a>
-            <a href="index.html" class="link link-voltar">Back to list</a>
+    </header>
+
+    <div class="about">
+        <div class="container">
+            <div class="about-head">
+                <div class="about-img f-left">
+                    <div class="owl-carousel">
+                        <div class="foto">
+                            <a href="https://i.imgur.com/1eExFGm.png" data-fancybox="images" data-caption="Lemon" class="item-galeria">
+                                <img src="https://i.imgur.com/1eExFGm.png" alt="Lemon" title="Lemon">
+                            </a>
+                        </div>
+                        <div class="foto">
+                            <a data-src="https://www.youtube.com/embed/U7zwd6WLvSQ?rel=0&amp;showinfo=0" data-fancybox="images" data-type="iframe" data-caption="Lemon Video">
+                                <iframe width="200" height="200" src="https://www.youtube.com/embed/U7zwd6WLvSQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <section class="about-discrip f-right">
+                    <h2>Lemon - ¢0.50 lb</h2>
+                    <p>Sicilian lemon is the fruit of a small evergreen tree native to the Southeast Asia region of the rutaceous family.</p>
+                    <button class="link"><i class="ion-android-cart"></i> Add to cart</a>
+                </section>
+            </div>
+            <div class="more-links">
+                <a href="https://www.google.com/search?q=limão" target="_blank" class="link">Search on Google</a>
+                <a href="index.html" class="link link-voltar">Back to list</a>
+            </div>
         </div>
     </div>
 </body>

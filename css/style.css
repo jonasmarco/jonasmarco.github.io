@@ -1,3 +1,5 @@
+/* BASICS */
+
 :root {
     --azul-1: #42A5F5;
     --azul-2: #90CAF9;
@@ -34,6 +36,12 @@ iframe {
 .f-right {
     float: right;
 }
+
+
+/* BASICS */
+
+
+/* HEADER */
 
 .main-header {
     background-color: var(--azul-1);
@@ -100,6 +108,10 @@ iframe {
     transition: all .4s ease;
 }
 
+.main-header .menu .cart a {
+    color: var(--preto-1);
+}
+
 .main-header .menu .cart i {
     display: block;
 }
@@ -107,6 +119,12 @@ iframe {
 .main-header .menu .cart:hover {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
+
+
+/* HEADER */
+
+
+/* HOME */
 
 .welcome {
     background-color: var(--azul-2);
@@ -127,7 +145,13 @@ iframe {
 
 .box-fruits {
     position: relative;
+    text-align: center;
     width: 100%;
+}
+
+.box-fruits .fruit-head {
+    font-family: 'Cookie', cursive;
+    font-size: 24px;
 }
 
 .fruits-list {
@@ -166,103 +190,6 @@ iframe {
     height: 40px;
     line-height: 40px;
     margin: 0;
-}
-
-.more-links {
-    text-align: center;
-}
-
-.more-links .link {
-    margin: 10px auto;
-    width: 33%;
-}
-
-.link {
-    -webkit-transition: all .4s ease;
-    -moz-transition: all .4s ease;
-    -ms-transition: all .4s ease;
-    -o-transition: all .4s ease;
-    transition: all .4s ease;
-    background-color: var(--azul-1);
-    color: black;
-    display: inline-block;
-    font-weight: bold;
-    height: 30px;
-    line-height: 30px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 90%;
-}
-
-.link:hover {
-    background-color: var(--azul-2);
-}
-
-.link-voltar {
-    background-color: var(--azul-2);
-}
-
-.about {
-    text-align: center;
-}
-
-.about-text {
-    margin: 0 auto;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    max-width: 500px;
-}
-
-.about-text h1 {
-    margin: 0 auto;
-}
-
-.container-form {
-    margin: 0 auto;
-    max-width: 250px;
-}
-
-.formshow {
-    margin: 0 auto;
-    width: 250px;
-}
-
-.imput-form {
-    -webkit-transition: all .4s ease;
-    -moz-transition: all .4s ease;
-    -ms-transition: all .4s ease;
-    -o-transition: all .4s ease;
-    transition: all .4s ease;
-    font-size: 16px;
-    text-indent: 6px;
-}
-
-input[type="submit"] {
-    border: none;
-    cursor: pointer;
-    font: inherit;
-}
-
-.imput-form:active,
-.imput-form:focus {
-    box-shadow: 2px 2px 2px 0px #00048e;
-}
-
-.formshow label,
-input {
-    display: block;
-    height: 30px;
-    line-height: 30px;
-    margin: 8px 0;
-    width: 100%;
-}
-
-.forms .link {
-    width: 100%;
 }
 
 
@@ -319,6 +246,201 @@ input {
 
 /* FONT_STYLE */
 
+
+/* HOME */
+
+
+/* MORE LINKS */
+
+.more-links {
+    text-align: center;
+}
+
+.more-links .link {
+    margin: 10px auto;
+    width: 33%;
+}
+
+.link {
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    background-color: var(--azul-1);
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 90%;
+}
+
+.link:hover {
+    background-color: var(--azul-2);
+}
+
+.link-voltar {
+    background-color: var(--azul-2);
+}
+
+
+/* MORE LINKS */
+
+
+/* ABOUT PAGES */
+
+.about {
+    margin-top: 30px;
+}
+
+.about-head {
+    overflow: auto;
+}
+
+.about-head .about-img img {
+    height: 200px;
+    padding: 5px;
+    width: 200px;
+}
+
+.about-head .about-discrip {
+    width: calc(100% - 350px);
+}
+
+.about-head .about-discrip h2,
+p {
+    display: block;
+}
+
+.about-head .about-discrip .link {
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin-right: 0;
+    text-align: center;
+    width: 150px;
+}
+
+.owl-carousel {
+    width: 200px;
+}
+
+.owl-carousel .foto {
+    margin: 0 auto;
+}
+
+.owl-carousel .foto a {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+.owl-carousel .foto a img {
+    display: block;
+    margin: 0 auto;
+    min-block-size: 100%;
+    min-width: 100%;
+}
+
+.owl-dots {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    bottom: 7%;
+    height: 15px;
+    left: 0;
+    list-style: none;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 998;
+}
+
+.owl-dots>* {
+    background-color: var(--azul-1);
+    border: 2px solid var(--branco-1);
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    margin: 0 5px;
+    padding: 0;
+    width: 15px;
+}
+
+.owl-dots>*.active {
+    background-color: var(--cinza-1);
+}
+
+.owl-dots>*:hover:not(.active) {
+    background-color: var(--azul-2);
+}
+
+
+/* ABOUT PAGES */
+
+
+/* FORM PAGES */
+
+.container-form {
+    margin: 0 auto;
+    max-width: 250px;
+}
+
+.formshow {
+    margin: 0 auto;
+    width: 250px;
+}
+
+.imput-form {
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    font-size: 16px;
+    text-indent: 6px;
+}
+
+input[type="submit"] {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.imput-form:active,
+.imput-form:focus {
+    box-shadow: 2px 2px 2px 0px #00048e;
+}
+
+.formshow label,
+input {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.forms .link {
+    width: 100%;
+}
+
+
+/* FORM PAGES */
+
+
+/* MEDIA QUERIES */
+
 @media screen and (min-width: 1100px) {
     .container {
         display: block;
@@ -341,16 +463,33 @@ input {
     .welcome h2 {
         font-size: 32pt;
     }
-    .more-links {
-        /* padding: 20px 0; */
-    }
-    .more-links .link {
-        /* width: 50%; */
-    }
 }
 
 @media screen and (max-width: 767px) {
     .welcome h2 {
         font-size: 28pt;
     }
+    .about-head {
+        overflow: hidden;
+    }
+    .about-img {
+        float: none;
+    }
+    .owl-carousel {
+        margin: 0 auto;
+    }
+    .about-discrip {
+        float: none;
+        text-align: center;
+        width: 100% !important;
+    }
+    .about-head .about-discrip .link {
+        margin: 0 auto;
+    }
+    .more-links .link {
+        height: auto;
+    }
 }
+
+
+/* MEDIA QUERIES */
