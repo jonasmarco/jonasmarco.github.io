@@ -22,13 +22,22 @@
     <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- INCLUDES -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="scripts/fancybox/jquery.fancybox.min.js"></script>
+    <script src="scripts/owl-carousel/owl.carousel.js"></script>
+    <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="scripts/fancybox/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="scripts/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="scripts/owl-carousel/owl.transitions.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header class="main-header">
+    <header class="main-header" id="main-header">
         <div class="container">
             <div class="f-left">
                 <div class="brand">
@@ -49,7 +58,6 @@
             </div>
         </div>
     </header>
-
 
     <section class="welcome">
         <div class="container">
@@ -212,6 +220,9 @@
         <a href="cadastro.html" class="link">Register</a>
     </section>
 
+    <div class="btn-night-mode" id="btn-night-mode">
+        <i class="ion-ios-lightbulb"></i>
+    </div>
 </body>
 
 </html>
