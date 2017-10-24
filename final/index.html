@@ -26,6 +26,10 @@
     <script src="script/jquery.fancybox.min.js"></script>
     <!-- Script do Projeto -->
     <script src="script/script.js"></script>
+
+    <!-- HighlightJS -->
+    <link rel="stylesheet" href="script/highlight/default.min.css">
+    <script src="script/highlight/highlight.min.js"></script>
 </head>
 
 <body>
@@ -36,8 +40,8 @@
         <div class="section">
             <div class="article">
                 <p>
-                    fancyBox é uma biblioteca JavaScript usada para apresentar imagens, vídeos e qualquer conteúdo html de forma elegante. Tem
-                    todos os recursos que você esperaria - toque habilitado, responsivo e totalmente personalizável.
+                    FancyBox é uma biblioteca JavaScript usada para apresentar imagens, vídeos e qualquer conteúdo html de forma elegante. Tem
+                    todos os recursos que você esperaria - toque habilitado, responsividade e totalmente personalizável.
                 </p>
             </div>
         </div>
@@ -52,9 +56,9 @@
         <div class="section">
             <div class="article">
                 <p>
-                    Inclua os arquivos
+                    Inclua os arquivos 
                     <b>jquery.fancybox.min.css</b> e
-                    <b>jquery.fancybox.min.js</b> no seu projeto juntamente com a versão mais recente do jQuery.
+                    <b>jquery.fancybox.min.js</b> no seu projeto juntamente com a versão mais recente do jQuery. Usar uma <a href="https://cdnjs.com/libraries/lightbox2">CDN</a> também é uma alternativa
                 </p>
             </div>
         </div>
@@ -63,11 +67,12 @@
                 <p>
                     Crie uma estrutura html básica
                 </p>
-                <textarea name="" id="" cols="30" rows="6" readonly>
-<a href="http://lorempixel.com/500/500/cats/" data-fancybox data-caption="Cute Cat">
-    <img src="http://lorempixel.com/500/500/cats/" alt="Cute Cat" title="Cute Cat" />
-</a>
-                </textarea>
+                <pre>
+                    <code>
+    <a href="http://lorempixel.com/500/500/cats/" data-fancybox data-caption="Cute Cat">
+        <img src="http://lorempixel.com/500/500/cats/" alt="Cute Cat" title="Cute Cat" />
+    </a>
+                    </code>
                 </pre>
             </div>
         </div>
