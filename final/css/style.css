@@ -1,6 +1,7 @@
 :root {
     --color1: #FF6666;
     --color2: #FFFFFF;
+    --color3: #117474;
 }
 
 body {
@@ -9,13 +10,23 @@ body {
 }
 
 a {
-    color: #117474;
+    color: var(--color3);
 }
 
-textarea {
+p {
+    margin: 0;
+}
+
+pre {
+    font-size: 22px;
+    margin: 0;
+}
+
+pre code {
     border: none;
     cursor: default;
-    padding: 0;
+    font-size: 22px;
+    padding: 0 !important;
     resize: none;
     text-align: left;
     width: 100%;
@@ -27,7 +38,7 @@ textarea {
     -o-user-select: none;
 }
 
-textarea:focus {
+pre code:focus {
     outline: none;
 }
 
@@ -53,14 +64,16 @@ textarea:focus {
 
 .section .article {
     background-color: var(--color2);
+    border-radius: 6px;
     font-size: 22px;
     margin: 0 auto;
-    max-width: 850px;
+    max-width: 1200px;
     padding: 20px;
     text-align: left;
 }
 
 .demo1 {
+    display: inline-block;
     height: 250px;
     margin: 0 auto;
     width: 250px;
@@ -72,4 +85,69 @@ textarea:focus {
 
 .demo1 a img {
     width: 100%;
- }
+}
+
+.fp-tableCell {
+    text-align: center;
+}
+
+
+/* Custom modal content styling */
+
+.modal-container {
+    max-width: 500px;
+    padding: 0;
+    margin: 20px 0;
+    border-radius: .3em;
+    box-shadow: 0 0.1em 0.4em rgba(0, 0, 0, .3);
+}
+
+.modal-title {
+    font-weight: 700;
+    padding: 1.5em;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.modal-body {
+    max-height: 70vh;
+    padding: 0 1.5em 1.5em 1.5em;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 1.5em;
+    text-align: right;
+}
+
+.modal-container p:first-child {
+    margin-top: 0;
+}
+
+.btn {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    background: var(--color1);
+    border-radius: 20px;
+    border-width: 0;
+    color: var(--color2);
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 5px 5px 5px 0;
+    outline: none;
+    padding: 7px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+    user-select: none;
+}
+
+@media screen and (max-width: 1024px) {
+    * {
+        font-size: 16px;
+    }
+}
