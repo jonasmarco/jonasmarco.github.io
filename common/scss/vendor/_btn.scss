@@ -1,0 +1,30 @@
+/***********
+ Buttons
+***********/
+@import "../vars";
+.btn {
+  color: $color-white;
+  display: block;
+  font-size: 1.2rem;
+  padding: 10px;
+  text-align: center;
+  width: 180px;
+  &.primary {
+    background-color: $color-primary;
+    &:hover, &:focus {
+      background-color: darken($color-primary, 10%);
+    }
+  }
+  &.warning {
+    background-color: $color-warning;
+    &:hover, &:focus {
+      background-color: darken($color-warning, 10%);
+    }
+  }
+  &.danger {
+    background-color: $color-danger;
+    &:hover, &:focus {
+      background-color: darken($color-danger, 10%);
+    }
+  }
+}
