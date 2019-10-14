@@ -74,7 +74,7 @@ if( typeof front_path !== 'undefined' )
 	.copyDirectory(front_path.source + 'uploads/', front_path.uploads)
 
 	.browserSync({
-		proxy: 'D:\\Users\\Jonas\\Projetos\\jonasmarco.github.io',
+    proxy: '\\Users\\Jonas\\Projetos\\jonasmarco.github.io',
 		files: [
 			public_path + '/css/**/*.*',
 			public_path + '/js/**/*.*',
