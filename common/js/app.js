@@ -116,5 +116,102 @@ $(document).ready(() => {
     opacity: 0
   }, .2);
 
+  /** StaggerFrom (Só funciona com lista) */
+  let $body_staggerfrom  = $('body.body-staggerfrom');
+  let $itens_staggerfrom = $body_staggerfrom.find('.item');
+
+  TweenMax.staggerFrom($itens_staggerfrom, .5, {
+    scale: 0,
+    opacity: 0
+  }, .5);
+
+  /** StaggerFromTo (Só funciona com lista) */
+  let $body_staggerfromto  = $('body.body-staggerfromto');
+  let $itens_staggerfromto = $body_staggerfromto.find('.item');
+
+  TweenMax.staggerFromTo($itens_staggerfromto, .5, {
+    scale: .3,
+    rotation: 190
+  }, {
+    scale: 1.1,
+    rotation: 0
+  }, .2);
+
+  /** Cycle (Só funciona em stack) */
+  let $body_cycle  = $('body.body-cycle');
+  let $itens_cycle = $body_cycle.find('.item');
+
+  TweenMax.staggerTo($itens_cycle, 1, {
+    // cycle: {
+    //   opacity: [0, 1]
+    // }
+    cycle: {
+      x: function(index, target) {
+        return index * 30
+      },
+      opacity: [0, 1]
+    }
+  }, .3);
+
+  /** Loops */
+  let $body_loops  = $('body.body-loops');
+  let $itens_loops = $body_loops.find('.item');
+  let $loops_title = $body_loops.find('h1.title');
+
+  TweenMax.fromTo($loops_title, 1, {
+    x: -60
+  }, {
+    x: 600,
+    repeat: -1,
+    yoyo: true
+  });
+
+  TweenMax.staggerFrom($itens_loops, .5, {
+    scale: 0,
+    repeat: -1,
+    yoyo: true
+  }, .5);
+
+  /** Callbacks */
+  let $body_callbacks  = $('body.body-callbacks');
+  let $itens_callbacks = $body_callbacks.find('.item');
+  let $callbacks_title = $body_callbacks.find('h1.title');
+  let link             = $('body a');
+  let i                = 0;
+
+  TweenMax.to($callbacks_title, 1, {
+    x: 500,
+    repeat: 1,
+    onStart: onStart,
+    // onStart: function() {
+    //   console.log('A animação começou');
+    // },
+    onUpdate: onUpdate,
+    // onUpdate: function() {
+    //   console.log('A animação está acontecendo');
+    // },
+    onComplete: onComplete,
+    // onComplete: function() {
+    //   console.log('A animação terminou');
+    // },
+    onRepeat: function() {
+      console.log('A animação repetiu');
+    }
+  });
+
+  function onStart() {
+    link.text('Index Yea Bitch!');
+  }
+
+  function onUpdate() {
+    $callbacks_title.text(i++);
+  }
+
+  function onComplete() {
+    TweenMax.to($itens_callbacks, .5, {
+      opacity: 0
+    });
+  }
+
   // Basics
 });
