@@ -12,7 +12,8 @@ import {
   TweenMax,
   Power2,
   TimelineLite,
-  SlowMo
+  SlowMo,
+  TimelineMax
 } from "gsap/TweenMax";
 
 $(document).ready(() => {
@@ -176,7 +177,6 @@ $(document).ready(() => {
   let $body_callbacks  = $('body.body-callbacks');
   let $itens_callbacks = $body_callbacks.find('.item');
   let $callbacks_title = $body_callbacks.find('h1.title');
-  let link             = $('body a');
   let i                = 0;
 
   TweenMax.to($callbacks_title, 1, {
@@ -200,7 +200,7 @@ $(document).ready(() => {
   });
 
   function onStart() {
-    link.text('Index Yea Bitch!');
+    $itens_callbacks.text('Index Yea Bitch!');
   }
 
   function onUpdate() {
@@ -214,4 +214,85 @@ $(document).ready(() => {
   }
 
   // Basics
+
+
+  // Timelines
+  /** Aula 01 */
+  let $body_timeline1  = $('body.body-timeline1');
+  let $itens_timeline1 = $body_timeline1.find('.item');
+  let $timeline1_title = $body_timeline1.find('h1.title');
+  let $timeline1_link  = $body_timeline1.find('a');
+
+  let tl1 = new TimelineMax();
+
+  tl1.from($timeline1_title, 1, {
+    x: 500,
+    opacity: 0
+  })
+  .from($timeline1_link, 1, {
+    x: -500,
+    opacity: 0,
+  })
+  .staggerFrom($itens_timeline1, .5, {
+    scale: 0,
+    opacity: 0,
+  }, .3);
+
+  /** Aula 02 */
+  let $body_timeline2  = $('body.body-timeline2');
+  let $itens_timeline2 = $body_timeline2.find('.item');
+  let $timeline2_title = $body_timeline2.find('h1.title');
+  let $timeline2_link  = $body_timeline2.find('a');
+
+  let tl2 = new TimelineMax();
+
+  tl2.from($itens_timeline2, 1, {
+    x: 500,
+    opacity: 0
+  })
+  .add('titleAppear', '+=1')
+  .from($timeline2_title, 1, {
+    x: -500,
+    opacity: 0,
+  }, 'titleAppear') // overlap - negative relative
+  // }, '+=1') // delay - positive relative
+  .staggerFrom($timeline2_link, .5, {
+    scale: 0,
+    opacity: 0,
+  }, .3, 2); // position absolute
+
+  /** Aula 03 */
+  let $body_timeline3  = $('body.body-timeline3');
+  let $itens_timeline3 = $body_timeline3.find('.item');
+  let $timeline3_title = $body_timeline3.find('h1.title');
+  let $timeline3_link  = $body_timeline3.find('a');
+  let $timeline3_sub   = $body_timeline3.find('h4.subtitle');
+
+  let play = $body_timeline3.find('#play');
+  let pause = $body_timeline3.find('#pause');
+  let resume = $body_timeline3.find('#resume');
+  let reverse = $body_timeline3.find('#reverse');
+  let restart = $body_timeline3.find('#restart');
+
+  const tl = new TimelineMax();
+
+  tl
+  .from($timeline3_title, .5, {
+    x: 500,
+    opacity: 0
+  })
+  .from($timeline3_sub, .5, {
+    x: -500,
+    opacity: 0
+  })
+  .from($timeline3_link, .5, {
+    scale: 0,
+    opacity: 0
+  })
+  .staggerFrom($itens_timeline3, .5, {
+    scale: 0,
+    opacity: 0
+  }, .3);
+
+  // Timelines
 });
