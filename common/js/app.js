@@ -10,11 +10,18 @@ require('bootstrap');
 // GSAP
 import {
   TweenMax,
+  Power0,
   Power2,
+  Power3,
+  cssPlugin,
   TimelineLite,
+  Sine,
   SlowMo,
-  TimelineMax
-} from "gsap/TweenMax";
+  TimelineMax,
+  Bounce,
+  Elastic,
+} from "gsap";
+import { Signer } from "crypto";
 
 $(document).ready(() => {
   console.log('.. iniciando ..');
@@ -27,7 +34,7 @@ $(document).ready(() => {
   TweenMax.set($itens_set, {
     x: 100,
     y: -100,
-    opacity: .4
+    opacity: .8
   });
 
   let $setTitle = $body_sets.find('h1.title');
@@ -44,7 +51,7 @@ $(document).ready(() => {
 
   TweenMax.to($toTitle, 5, {
     x: 500,
-    opacity: 0
+    opacity: 0.01
   });
 
   TweenMax.to($itens_to, 2, {
@@ -84,6 +91,14 @@ $(document).ready(() => {
     x: 500
   });
 
+  TweenMax.fromTo($itens_fromto, 2, {
+    scale: 0,
+    opacity: 0
+  }, {
+    scale: 1,
+    opacity: 1
+  });
+
   /** Delay */
   let $body_delay  = $('body.body-delay');
   let $itens_delay = $body_delay.find('.item');
@@ -93,7 +108,7 @@ $(document).ready(() => {
     x: -500
   });
 
-  TweenMax.to($delayTitle, 2, {
+  TweenMax.to($itens_delay, 2, {
     x: 500,
     delay: 2
   });
@@ -104,6 +119,11 @@ $(document).ready(() => {
   let $easingsTitle  = $body_easings.find('h1.title');
 
   TweenMax.from($easingsTitle, 2, {
+    scale: 0,
+    ease: Bounce.easeOut
+  });
+
+  TweenMax.from($itens_easings, 2, {
     scale: 0,
     ease: Bounce.easeOut
   });
@@ -143,9 +163,6 @@ $(document).ready(() => {
   let $itens_cycle = $body_cycle.find('.item');
 
   TweenMax.staggerTo($itens_cycle, 1, {
-    // cycle: {
-    //   opacity: [0, 1]
-    // }
     cycle: {
       x: function(index, target) {
         return index * 30
@@ -195,7 +212,6 @@ $(document).ready(() => {
     //   console.log('A animação terminou');
     // },
     onRepeat: function() {
-      console.log('A animação repetiu');
     }
   });
 
@@ -212,7 +228,6 @@ $(document).ready(() => {
       opacity: 0
     });
   }
-
   // Basics
 
 
@@ -225,8 +240,8 @@ $(document).ready(() => {
 
   let tl1 = new TimelineMax();
 
-  tl1.from($timeline1_title, 1, {
-    x: 500,
+  tl1.from($timeline1_title, 1.5, {
+    y: 1000,
     opacity: 0
   })
   .from($timeline1_link, 1, {
@@ -247,7 +262,7 @@ $(document).ready(() => {
   let tl2 = new TimelineMax();
 
   tl2.from($itens_timeline2, 1, {
-    x: 500,
+    y: -500,
     opacity: 0
   })
   .add('titleAppear', '+=1')
@@ -268,13 +283,15 @@ $(document).ready(() => {
   let $timeline3_link  = $body_timeline3.find('a');
   let $timeline3_sub   = $body_timeline3.find('h4.subtitle');
 
-  let play = $body_timeline3.find('#play');
-  let pause = $body_timeline3.find('#pause');
-  let resume = $body_timeline3.find('#resume');
+  let play    = $body_timeline3.find('#play');
+  let pause   = $body_timeline3.find('#pause');
+  let resume  = $body_timeline3.find('#resume');
   let reverse = $body_timeline3.find('#reverse');
   let restart = $body_timeline3.find('#restart');
 
-  const tl = new TimelineMax();
+  const tl = new TimelineMax({
+    paused:true
+  });
 
   tl
   .from($timeline3_title, .5, {
@@ -294,5 +311,194 @@ $(document).ready(() => {
     opacity: 0
   }, .3);
 
+  play.on('click', function() {
+    tl.play();
+  });
+
+  pause.on('click', function() {
+    tl.pause();
+  });
+
+  resume.on('click', function() {
+    tl.resume();
+  });
+
+  reverse.on('click', function() {
+    tl.reverse();
+  });
+
+  restart.on('click', function() {
+    tl.restart();
+  });
+
+  /** Aula 04 */
+  let $body_timeline4  = $('body.body-timeline4');
+  let $itens_timeline4 = $body_timeline4.find('.item');
+  let $timeline4_title = $body_timeline4.find('h1.title');
+  let $timeline4_link  = $body_timeline4.find('a');
+  let $timeline4_sub   = $body_timeline4.find('h4.subtitle');
+
+  let fast     = $body_timeline4.find('#fast');
+  let slow     = $body_timeline4.find('#slow');
+  let normal   = $body_timeline4.find('#normal');
+  let restart2 = $body_timeline4.find('#restart');
+
+  const tl4 = new TimelineMax({
+    paused:true
+  });
+
+  tl4
+  .from($timeline4_title, .5, {
+    x: 500,
+    opacity: 0
+  })
+  .from($timeline4_sub, .5, {
+    x: -500,
+    opacity: 0
+  })
+  .from($timeline4_link, .5, {
+    scale: 0,
+    opacity: 0
+  })
+  .staggerFrom($itens_timeline4, .5, {
+    scale: 0,
+    opacity: 0
+  }, .3);
+
+  fast.on('click', function() {
+    tl4.timeScale(5);
+    tl4.play();
+  });
+
+  slow.on('click', function() {
+    tl4.timeScale(1/10);
+    tl4.play();
+  });
+
+  normal.on('click', function() {
+    tl4.timeScale(1);
+    tl4.play();
+  });
+
+  restart2.on('click', function() {
+    tl4.restart();
+  });
   // Timelines
+
+
+  // Loaders
+  /** Loaders **/
+  let $body_loader1  = $('body.body-loaders');
+  let $balls_loader1 = $body_loader1.find('.ball');
+  let $square_loader1 = $body_loader1.find('.square');
+  let $circle_svg_loader1 = $body_loader1.find('.circle');
+  let $load_svg_loader1 = $body_loader1.find('.load');
+  let $money_svg_loader1 = $body_loader1.find('#money');
+  let $stick_svg_loader1 = $body_loader1.find('#stick');
+  let $left_svg_loader1 = $body_loader1.find('#left');
+  let $right_svg_loader1 = $body_loader1.find('#right');
+  let $whell1_svg_loader1 = $body_loader1.find('#wheel-1');
+  let $whell2_svg_loader1 = $body_loader1.find('#wheel-2');
+  let $whell3_svg_loader1 = $body_loader1.find('#wheel-3');
+
+  TweenMax.staggerFromTo($balls_loader1, 1, {
+    // From
+    scale: .1,
+    opacity: 0
+  }, {
+    // To
+    scale: 1.2,
+    opacity: 1,
+    repeat: -1,
+    yoyo: true
+  }, .5);
+
+  TweenMax.to($square_loader1, 1, {
+    scale: .8,
+    borderRadius: '50%',
+    rotate: 360,
+    repeat: -1,
+    repeatDelay: .3,
+    yoyo: true
+  });
+
+  TweenMax.to($circle_svg_loader1, 3, {
+    strokeDashoffset: 0,
+    ease: Sine.easeInOut,
+    repeat: -1,
+    yoyo: true
+  });
+
+  TweenMax.to($load_svg_loader1, 2, {
+    strokeDashoffset: 0,
+    ease: Sine.easeInOut,
+    repeat: -1
+  });
+
+  TweenMax.from($money_svg_loader1, 2, {
+    scaleY: .8,
+    transformOrigin: 'bottom center',
+    ease: Power0.easeOut,
+    repeat: -1,
+    yoyo: true
+  });
+
+  // const tl5 = new TimelineMax({ repeat: -1, yoyo: true });
+  const tl5 = new TimelineMax({ repeat: -1 });
+
+  tl5.from($stick_svg_loader1, 2, { transformOrigin: 'center center', rotation: 25 }, 'first')
+     .from($left_svg_loader1, 2, { y: '-100px' }, 'first')
+     .from($right_svg_loader1, 2, { y: '+100' }, 'first')
+     // sem o yoyo: true, podemos fazer com um segundo passo
+     .to($stick_svg_loader1, 2, {  transformOrigin: 'center center', rotation: 25 }, 'second')
+     .to($left_svg_loader1, 2, { y: '-100px' }, 'second')
+     .to($right_svg_loader1, 2, { y: '+100' }, 'second');
+
+  TweenMax.to([$whell1_svg_loader1, $whell2_svg_loader1, $whell3_svg_loader1], 2, {
+    transformOrigin: 'center center',
+    rotation: 360,
+    ease: Power0.easeOut,
+    repeat: -1
+  });
+
+  // Loaders
+
+  // Urso Polar
+
+  // Parte 1
+  let $body_urso  = $('body.body-urso');
+  let $polarBear = $body_urso.find('#polar-bear polygon');
+  // TweenMax.staggerFrom($polarBear, 1.5, {
+  //   scale: 0,
+  //   opacity: 0,
+  //   transformOrigin: 'center center',
+  //   ease: Elastic.easeInOut,
+  //   repeat: -1
+  // }, .004);
+
+  // Parte 2
+  const polarBear = document.querySelectorAll('#polar-bear > polygon');
+  const svg = document.querySelector('#bear-svg');
+  const bear_width = svg.getBBox().width;
+  const bear_height = svg.getBBox().height;
+
+  polarBear.forEach(polygon => {
+      const xPos = Math.random() * bear_width - bear_width/2;
+      const yPos = Math.random() * bear_height - bear_height/2;
+      TweenMax.set(polygon, {
+          x: xPos,
+          y: yPos
+      });
+      TweenMax.to(polygon, 2, {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          ease: Power3.easeInOut,
+          repeat: -1,
+          repeatDelay: .5,
+          yoyo: true
+      });
+  });
+
+  // Urso Polar
 });
