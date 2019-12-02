@@ -20,6 +20,8 @@ import {
   TimelineMax,
   Bounce,
   Elastic,
+  TweenLite,
+  Back,
 } from "gsap";
 import { Signer } from "crypto";
 
@@ -479,26 +481,174 @@ $(document).ready(() => {
   // Parte 2
   const polarBear = document.querySelectorAll('#polar-bear > polygon');
   const svg = document.querySelector('#bear-svg');
-  const bear_width = svg.getBBox().width;
-  const bear_height = svg.getBBox().height;
 
-  polarBear.forEach(polygon => {
-      const xPos = Math.random() * bear_width - bear_width/2;
-      const yPos = Math.random() * bear_height - bear_height/2;
-      TweenMax.set(polygon, {
-          x: xPos,
-          y: yPos
-      });
-      TweenMax.to(polygon, 2, {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          ease: Power3.easeInOut,
-          repeat: -1,
-          repeatDelay: .5,
-          yoyo: true
-      });
-  });
+  if( svg != null ) {
+    const bear_width = svg.getBBox().width;
+    const bear_height = svg.getBBox().height;
+    polarBear.forEach(polygon => {
+        const xPos = Math.random() * bear_width - bear_width/2;
+        const yPos = Math.random() * bear_height - bear_height/2;
+        TweenMax.set(polygon, {
+            x: xPos,
+            y: yPos
+        });
+        TweenMax.to(polygon, 2, {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            ease: Power3.easeInOut,
+            repeat: -1,
+            repeatDelay: .5,
+            yoyo: true
+        });
+    });
+  }
 
   // Urso Polar
+
+  // Copa do mundo 2019
+
+  let $body_copa = $('body.body-copa');
+  let $background_copa = $body_copa.find('#background');
+  let $right_flag_copa = $body_copa.find('#right-flag');
+  let $left_flag_copa = $body_copa.find('#left-flag');
+  let $right_vuvuzela_copa = $body_copa.find('#right-vuvuzela');
+  let $left_vuvuzela_copa = $body_copa.find('#left-vuvuzela');
+  let $trophy_copa = $body_copa.find('#trophy');
+  let $title_copa = $body_copa.find('#title g');
+  let $restanart_copa = $body_copa.find('#restart');
+
+  const tl6 = new TimelineMax();
+  const show = { scale: 0, opacity: 0 };
+  const alignCenterBottom = { transformOrigin: 'center bottom' }
+  const alignLeftBottom = { transformOrigin: 'left bottom' }
+  const alignRightBottom = { transformOrigin: 'right bottom' }
+
+  tl6.staggerFrom($title_copa, .5, { opacity: 0, y: 50 }, -0.05)
+     .from($trophy_copa, .5, { ...show, ...alignCenterBottom })
+     .add('vuvuzela', '-=0.2')
+     .from($right_vuvuzela_copa, .3, { ...show, ...alignLeftBottom }, 'vuvuzela')
+     .from($left_vuvuzela_copa, .3, { ...show, ...alignRightBottom }, 'vuvuzela')
+     .from($background_copa, .5, { ...show, ...alignCenterBottom }, 'vuvuzela')
+     .from($right_flag_copa, .4, { ...show, rotation: '-90deg', ...alignLeftBottom }, 'vuvuzela+=.2')
+     .from($left_flag_copa, .4, { ...show, rotation: '90deg', ...alignRightBottom }, 'vuvuzela+=.2')
+     .to($background_copa, 1, { opacity: .4, scale: .95, ...alignCenterBottom, repeat: -1, yoyo: true })
+
+  $restanart_copa.on('click', function() {
+    tl6.restart();
+  });
+
+  // Copa do mundo 2019
+
+  // Modais
+
+  let $body_modais = $('body.body-modais');
+  let $modal = $body_modais.find('.modal');
+  let $modal_fade_in = $body_modais.find('#fadeIn');
+  let $modal_fade_in_scale = $body_modais.find('#fadeInScale');
+  let $modal_slide_in = $body_modais.find('#slideIn');
+  let $modal_full_screen = $body_modais.find('#fullScreen');
+  let $btn_close_modal = $body_modais.find('.modal__close');
+  let $modal_box = $body_modais.find('.modal__box');
+  let $modal_header = $body_modais.find('.modal__header');
+  let $modal_title = $body_modais.find('.modal__title');
+
+  $modal_fade_in.on('click', fadeIn);
+
+  function fadeIn() {
+    TweenMax.to($modal, .5, { autoAlpha: 1 });
+  }
+
+  $btn_close_modal.on('click', modalClose)
+
+  function modalClose() {
+    TweenMax.set([$modal, $btn_close_modal, $modal_box, $modal_header, $modal_title], { clearProps: 'all' });
+    TweenMax.to($modal, .5, { autoAlpha: 0 });
+  }
+
+  $modal_fade_in_scale.on('click', fadeInScale);
+
+  function fadeInScale() {
+    TweenMax.set($modal_box, { scale: 0 });
+    TweenMax.to($modal, .5, { autoAlpha: 1 });
+    TweenMax.to($modal_box, 1, { scale: 1, delay: .2, ease: Elastic.easeOut });
+  }
+
+  $modal_slide_in.on('click', slideIn);
+
+  function slideIn() {
+    TweenMax.to($modal, .5, { autoAlpha: 1 });
+    TweenMax.from($modal_box, .5, { autoAlpha: 0, top: 300 });
+  }
+
+  $modal_full_screen.on('click', fullScreen);
+
+  function fullScreen() {
+    TweenMax.set($modal, { backgroundColor: '#fff', scale: 0 });
+    TweenMax.set($btn_close_modal, { color: '#333' });
+    TweenMax.set([$modal_header, $modal_box], { position: 'initial' });
+    TweenMax.set($modal_title, { color: '#333', backgroundColor: '#fff' });
+    TweenMax.to($modal, .2, { autoAlpha: 1, scale: 1 });
+  }
+
+  // Modais
+
+  // Carousel
+
+  let $body_carousel = $('body.body-carousel');
+  let $carousel_itens = $body_carousel.find('.slider__item');
+  let $carousel_btn_next = $body_carousel.find('.slider__arow--right');
+  let $carousel_btn_prev = $body_carousel.find('.slider__arow--left');
+
+  const Slider = {
+    currentItem: 0,
+    init: () => {
+      Slider.in(Slider.currentItem);
+    },
+
+    in: (index) => {
+      const item = $carousel_itens.eq(index);
+      const slider_texts = item.find('p');
+      const tl7 = new TimelineMax();
+
+      TweenLite.set(item, { scale: .9 });
+      TweenLite.set(item, { left: '-100vw' });
+      tl7
+        .to(item, .5, { left: 0, delay: 1 })
+        .to(item, .5, { scale: 1 })
+        .staggerFrom(slider_texts, .5, { y: +300, autoAlpha: 0, ease: Back.easeOut }, 0.2)
+    },
+
+    out: (index, nextIndex) => {
+      const item = $carousel_itens.eq(index);
+      const slider_texts = item.find('p');
+      const tl7 = new TimelineMax();
+
+      tl7
+        .staggerTo(slider_texts, .5, { y: 300, autoAlpha: 0, ease: Back.easeIn }, '-0.5')
+        .to(item, .5, { scale: .9 })
+        .to(item, .5, { left: '100vw' })
+        .call(Slider.in, [nextIndex], this, '-=1.5')
+        .set(slider_texts, { clearProps: 'all' })
+    },
+
+    next: () => {
+      const next = Slider.currentItem !== $carousel_itens.length -1 ? Slider.currentItem + 1 : 0;
+      Slider.out(Slider.currentItem, next);
+      Slider.currentItem = next;
+    },
+
+    prev: () => {
+      const prev = Slider.currentItem > 0 ? Slider.currentItem -1 : $carousel_itens.length -1;
+      Slider.out(Slider.currentItem, prev);
+      Slider.currentItem = prev;
+    }
+  }
+
+  $carousel_btn_next.on('click', Slider.next);
+  $carousel_btn_prev.on('click', Slider.prev);
+
+  Slider.init();
+
+  // Carousel
 });

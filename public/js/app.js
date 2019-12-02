@@ -98,6 +98,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 /* harmony import */ var crypto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! crypto */ "./node_modules/crypto-browserify/index.js");
 /* harmony import */ var crypto__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(crypto__WEBPACK_IMPORTED_MODULE_1__);
+var _this = undefined;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // jQuery
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // Popper JS
 
@@ -510,25 +518,215 @@ $(document).ready(function () {
 
   var polarBear = document.querySelectorAll('#polar-bear > polygon');
   var svg = document.querySelector('#bear-svg');
-  var bear_width = svg.getBBox().width;
-  var bear_height = svg.getBBox().height;
-  polarBear.forEach(function (polygon) {
-    var xPos = Math.random() * bear_width - bear_width / 2;
-    var yPos = Math.random() * bear_height - bear_height / 2;
-    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set(polygon, {
-      x: xPos,
-      y: yPos
+
+  if (svg != null) {
+    var bear_width = svg.getBBox().width;
+    var bear_height = svg.getBBox().height;
+    polarBear.forEach(function (polygon) {
+      var xPos = Math.random() * bear_width - bear_width / 2;
+      var yPos = Math.random() * bear_height - bear_height / 2;
+      gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set(polygon, {
+        x: xPos,
+        y: yPos
+      });
+      gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(polygon, 2, {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Power3"].easeInOut,
+        repeat: -1,
+        repeatDelay: .5,
+        yoyo: true
+      });
     });
-    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(polygon, 2, {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Power3"].easeInOut,
-      repeat: -1,
-      repeatDelay: .5,
-      yoyo: true
+  } // Urso Polar
+  // Copa do mundo 2019
+
+
+  var $body_copa = $('body.body-copa');
+  var $background_copa = $body_copa.find('#background');
+  var $right_flag_copa = $body_copa.find('#right-flag');
+  var $left_flag_copa = $body_copa.find('#left-flag');
+  var $right_vuvuzela_copa = $body_copa.find('#right-vuvuzela');
+  var $left_vuvuzela_copa = $body_copa.find('#left-vuvuzela');
+  var $trophy_copa = $body_copa.find('#trophy');
+  var $title_copa = $body_copa.find('#title g');
+  var $restanart_copa = $body_copa.find('#restart');
+  var tl6 = new gsap__WEBPACK_IMPORTED_MODULE_0__["TimelineMax"]();
+  var show = {
+    scale: 0,
+    opacity: 0
+  };
+  var alignCenterBottom = {
+    transformOrigin: 'center bottom'
+  };
+  var alignLeftBottom = {
+    transformOrigin: 'left bottom'
+  };
+  var alignRightBottom = {
+    transformOrigin: 'right bottom'
+  };
+  tl6.staggerFrom($title_copa, .5, {
+    opacity: 0,
+    y: 50
+  }, -0.05).from($trophy_copa, .5, _objectSpread({}, show, {}, alignCenterBottom)).add('vuvuzela', '-=0.2').from($right_vuvuzela_copa, .3, _objectSpread({}, show, {}, alignLeftBottom), 'vuvuzela').from($left_vuvuzela_copa, .3, _objectSpread({}, show, {}, alignRightBottom), 'vuvuzela').from($background_copa, .5, _objectSpread({}, show, {}, alignCenterBottom), 'vuvuzela').from($right_flag_copa, .4, _objectSpread({}, show, {
+    rotation: '-90deg'
+  }, alignLeftBottom), 'vuvuzela+=.2').from($left_flag_copa, .4, _objectSpread({}, show, {
+    rotation: '90deg'
+  }, alignRightBottom), 'vuvuzela+=.2').to($background_copa, 1, _objectSpread({
+    opacity: .4,
+    scale: .95
+  }, alignCenterBottom, {
+    repeat: -1,
+    yoyo: true
+  }));
+  $restanart_copa.on('click', function () {
+    tl6.restart();
+  }); // Copa do mundo 2019
+  // Modais
+
+  var $body_modais = $('body.body-modais');
+  var $modal = $body_modais.find('.modal');
+  var $modal_fade_in = $body_modais.find('#fadeIn');
+  var $modal_fade_in_scale = $body_modais.find('#fadeInScale');
+  var $modal_slide_in = $body_modais.find('#slideIn');
+  var $modal_full_screen = $body_modais.find('#fullScreen');
+  var $btn_close_modal = $body_modais.find('.modal__close');
+  var $modal_box = $body_modais.find('.modal__box');
+  var $modal_header = $body_modais.find('.modal__header');
+  var $modal_title = $body_modais.find('.modal__title');
+  $modal_fade_in.on('click', fadeIn);
+
+  function fadeIn() {
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to($modal, .5, {
+      autoAlpha: 1
     });
-  }); // Urso Polar
+  }
+
+  $btn_close_modal.on('click', modalClose);
+
+  function modalClose() {
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set([$modal, $btn_close_modal, $modal_box, $modal_header, $modal_title], {
+      clearProps: 'all'
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to($modal, .5, {
+      autoAlpha: 0
+    });
+  }
+
+  $modal_fade_in_scale.on('click', fadeInScale);
+
+  function fadeInScale() {
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set($modal_box, {
+      scale: 0
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to($modal, .5, {
+      autoAlpha: 1
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to($modal_box, 1, {
+      scale: 1,
+      delay: .2,
+      ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Elastic"].easeOut
+    });
+  }
+
+  $modal_slide_in.on('click', slideIn);
+
+  function slideIn() {
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to($modal, .5, {
+      autoAlpha: 1
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].from($modal_box, .5, {
+      autoAlpha: 0,
+      top: 300
+    });
+  }
+
+  $modal_full_screen.on('click', fullScreen);
+
+  function fullScreen() {
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set($modal, {
+      backgroundColor: '#fff',
+      scale: 0
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set($btn_close_modal, {
+      color: '#333'
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set([$modal_header, $modal_box], {
+      position: 'initial'
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set($modal_title, {
+      color: '#333',
+      backgroundColor: '#fff'
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to($modal, .2, {
+      autoAlpha: 1,
+      scale: 1
+    });
+  } // Modais
+  // Carousel
+
+
+  var $body_carousel = $('body.body-carousel');
+  var $carousel_itens = $body_carousel.find('.slider__item');
+  var $carousel_btn_next = $body_carousel.find('.slider__arow--right');
+  var $carousel_btn_prev = $body_carousel.find('.slider__arow--left');
+  var Slider = {
+    currentItem: 0,
+    init: function init() {
+      Slider["in"](Slider.currentItem);
+    },
+    "in": function _in(index) {
+      var item = $carousel_itens.eq(index);
+      var slider_texts = item.find('p');
+      var tl7 = new gsap__WEBPACK_IMPORTED_MODULE_0__["TimelineMax"]();
+      gsap__WEBPACK_IMPORTED_MODULE_0__["TweenLite"].set(item, {
+        scale: .9
+      });
+      gsap__WEBPACK_IMPORTED_MODULE_0__["TweenLite"].set(item, {
+        left: '-100vw'
+      });
+      tl7.to(item, .5, {
+        left: 0,
+        delay: 1
+      }).to(item, .5, {
+        scale: 1
+      }).staggerFrom(slider_texts, .5, {
+        y: +300,
+        autoAlpha: 0,
+        ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Back"].easeOut
+      }, 0.2);
+    },
+    out: function out(index, nextIndex) {
+      var item = $carousel_itens.eq(index);
+      var slider_texts = item.find('p');
+      var tl7 = new gsap__WEBPACK_IMPORTED_MODULE_0__["TimelineMax"]();
+      tl7.staggerTo(slider_texts, .5, {
+        y: 300,
+        autoAlpha: 0,
+        ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Back"].easeIn
+      }, '-0.5').to(item, .5, {
+        scale: .9
+      }).to(item, .5, {
+        left: '100vw'
+      }).call(Slider["in"], [nextIndex], _this, '-=1.5').set(slider_texts, {
+        clearProps: 'all'
+      });
+    },
+    next: function next() {
+      var next = Slider.currentItem !== $carousel_itens.length - 1 ? Slider.currentItem + 1 : 0;
+      Slider.out(Slider.currentItem, next);
+      Slider.currentItem = next;
+    },
+    prev: function prev() {
+      var prev = Slider.currentItem > 0 ? Slider.currentItem - 1 : $carousel_itens.length - 1;
+      Slider.out(Slider.currentItem, prev);
+      Slider.currentItem = prev;
+    }
+  };
+  $carousel_btn_next.on('click', Slider.next);
+  $carousel_btn_prev.on('click', Slider.prev);
+  Slider.init(); // Carousel
 });
 
 /***/ }),
