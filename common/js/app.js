@@ -9,20 +9,21 @@ require('bootstrap');
 
 // GSAP
 import {
-  TweenMax,
+  Back,
+  Bounce,
+  cssPlugin,
+  Draggable,
+  Elastic,
   Power0,
   Power2,
   Power3,
-  cssPlugin,
-  TimelineLite,
   Sine,
   SlowMo,
+  TimelineLite,
   TimelineMax,
-  Bounce,
-  Elastic,
   TweenLite,
-  Back,
-} from "gsap";
+  TweenMax,
+} from "gsap/all";
 import { Signer } from "crypto";
 
 $(document).ready(() => {
@@ -651,4 +652,129 @@ $(document).ready(() => {
   Slider.init();
 
   // Carousel
+
+  // Draggable
+
+  let $body_draggble_1 = $('body.body-draggble-1');
+  let $body_draggble_2 = $('body.body-draggble-2');
+  let $body_draggble_3 = $('body.body-draggble-3');
+  let $body_draggble_4 = $('body.body-draggble-4');
+  let $body_draggble_5 = $('body.body-draggble-5');
+  let $body_draggble_6 = $('body.body-draggble-6');
+  let $draggble_itens = $body_draggble_1.find('.item');
+  let $container = $body_draggble_1.find('.body-draggble-1');
+  const $bodyParts = "#top_hat, #moustache, #redhat, #curly-moustache, #eyes1, #lips, #toothy-lips, #toupe, #toothy, #big-ear-r, #big-ear-l, #shoes1, #lashed, #lash2, #lazy-eyes, #longbrown-moustache, #purplehat, #sm-ear-r, #sm-ear-l, #earring-r, #earring-l, #highheels, #greenhat, #shoes2, #blonde, #blond-mustache, #elf-r, #elf-l";
+  let $bounce = $body_draggble_2.find('#svg');
+  let $balloon = $body_draggble_3.find('#balloon-innards');
+  let $pieces = $body_draggble_3.find('.piece');
+  let $dragInteragion = $body_draggble_4.find('.drag-interaction');
+  let $dragPrice = $body_draggble_4.find('.price');
+  let $minRotation = 0;
+  let $maxRotation = 180;
+  let $minVal = 0;
+  let $maxVal = 50000;
+  let $folders = $body_draggble_5.find('.folder');
+  let $trash = $body_draggble_5.find('.trash');
+  let $btn_limpar_lixeira = $body_draggble_5.find('#empty');
+  let $drag_me = $body_draggble_6.find('#drag-me');
+  let $before_after = $body_draggble_6.find('.before-after');
+  let $view_after = $body_draggble_6.find('.view-after');
+
+  // Draggable.create($draggble_itens);
+  Draggable.create($draggble_itens, {
+    // type: 'x',
+    // type: 'y',
+    // type: 'rotation',
+    // bounds: $container,
+    // edgeResistance: 1,
+    // dragResistance: .5
+    onDragStart: function() {
+      console.log('iniciando o drag');
+    },
+    onDrag: () => {
+      console.log('o drag está acontecendo');
+    },
+    onDragEndParams: ['O drag terminou!', 10],
+    onDragEnd: (message, number) => {
+      console.log(message, number, this);
+    }
+  });
+
+  Draggable.create($bodyParts, {
+    bounds: $bounce,
+    edgeResistance: .9
+  });
+  TweenMax.to($balloon, 4, {
+    y: 60,
+    repeat: -1,
+    yoyo: true,
+    ease: Power1.easeInOut
+  });
+  TweenMax.staggerTo($pieces, 2, {
+    cycle: {
+      x: randomQuebraCabeca,
+      y: randomQuebraCabeca
+    },
+    delay: 1,
+    ease: Elastic.easeInOut,
+  }, .2);
+  function randomQuebraCabeca() {
+    return (Math.random() * 4 - 2) * 60;
+  }
+  Draggable.create($pieces);
+
+  function onDrag() {
+    $dragPrice.text( (info.rotation * ($maxVal/$maxRotation)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) );
+  }
+  Draggable.create($dragInteragion, {
+    type: 'rotation',
+    bounds: {
+      minRotation: $minRotation,
+      maxRotation: $maxRotation
+    },
+    onDrag: onDrag
+  });
+  const info = Draggable.get($dragInteragion);
+
+  Draggable.create($folders, {
+    onDragEnd: deleteFolder
+  });
+
+  function deleteFolder() {
+    if( this.hitTest($trash) ) {
+      TweenLite.to(this.target, .5, {
+        opacity: 0,
+        scale: 0
+      });
+      $trash.addClass('is-full');
+      $btn_limpar_lixeira.show();
+    }
+  }
+
+  $btn_limpar_lixeira.on('click', function() {
+    $trash.removeClass('is-full');
+  });
+
+  Draggable.create($drag_me, {
+    type: 'left',
+    bounds: $before_after,
+    onDrag: updateImages
+  });
+
+  function updateImages() {
+    TweenLite.set($view_after, {
+      zIndex: 3,
+      width: $drag_me.css('left')
+    });
+  }
+
+  function animateTo(width) {
+    TweenLite.to($drag_me, 1, {
+      left: width,
+      onUpdate: updateImages
+    });
+  }
+  animateTo(150);
+
+  // Draggable
 });

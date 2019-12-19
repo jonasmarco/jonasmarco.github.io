@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jonas Marco - Desenvolvedor Web</title>
+  <link rel="stylesheet" href="../../../public/css/app.css">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: rgb(171, 172, 172);
+    display: flex;
+  }
+
+  .container {
+    flex: 80%;
+  }
+
+  .folder {
+    max-width: 120px;
+    padding: 3%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .trash {
+    background: url('../../../public/images/empty-trash.png');
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+    z-index: 1;
+  }
+
+  .trash.is-full {
+    background: url('../../../public/images/full-trash.png');
+  }
+
+  #empty {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    padding: 20px;
+    cursor: pointer;
+  }
+</style>
+
+<body class="body-draggble-5">
+
+  <div class="container">
+    <img class="folder" src="../../../public/images/mac-folder.png" alt="Folder">
+    <img class="folder" src="../../../public/images/mac-folder.png" alt="Folder">
+    <img class="folder" src="../../../public/images/mac-folder.png" alt="Folder">
+    <img class="folder" src="../../../public/images/mac-folder.png" alt="Folder">
+  </div>
+
+  <div class="trash"></div>
+  <button id="empty">Esvaziar lixeira</button>
+
+  <script src="../../../public/js/app.js"></script>
+</body>
+
+</html>

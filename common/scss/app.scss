@@ -292,6 +292,16 @@ body {
       }
     }
   }
+  &.body-draggble-5 {
+    img {
+      display: inline;
+    }
+  }
+  &.body-draggble-6 {
+    img {
+      max-width: initial;
+    }
+  }
 }
 
 p {
