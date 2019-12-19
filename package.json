@@ -24,18 +24,18 @@
   "homepage": "https://github.com/jonasmarco/jonasmarco.github.io#readme",
   "devDependencies": {
     "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "browser-sync-webpack-plugin": "^2.2.2",
     "browser-sync": "^2.26.7",
     "cross-env": "^6.0.3",
     "gsap": "^2.0.0",
     "iscroll": "^5.2.0",
     "jquery": "^3.4.1",
-    "laravel-mix": "^5.0.0",
+    "laravel-mix": "^5.0.1",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.0",
     "popper.js": "^1.16.0",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.11"
   }
 }
