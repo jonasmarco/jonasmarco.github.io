@@ -28,7 +28,7 @@
     "browser-sync-webpack-plugin": "^2.2.2",
     "browser-sync": "^2.26.7",
     "cross-env": "^7.0.2",
-    "gsap": "^3.2.5",
+    "gsap": "^3.6.0",
     "iscroll": "^5.2.0",
     "jquery": "^3.4.1",
     "laravel-mix": "^5.0.4",
